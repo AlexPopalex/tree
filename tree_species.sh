@@ -1,3 +1,5 @@
+#Please, note that the genomes of B. r. redtenbacheri and B. g. grandii available at ncbi under PRJNA962493 and PRJNA1251886 underwent the ncbi quality check upon upload. This lead to removal of 2 (Brsri) and 3 (Bgigi) short sequences from the scaffolds, respectively.  
+
 #adapter autodetection and removal and quality trimming qual < 20 from 5' end, for unpaired RAD data remove the --paired option (trimgalore/0.6.6, cutadapt/2.10)
 ../../../Software/TrimGalore-master/trim_galore -j 20 --paired Bas_R1.fq.gz Bas_R2.fq.gz
 

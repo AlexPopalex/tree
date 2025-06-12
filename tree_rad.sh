@@ -1,3 +1,5 @@
+#Please, note that the genomes of B. r. redtenbacheri and B. g. grandii available at ncbi under PRJNA962493 and PRJNA1251886 underwent the ncbi quality check upon upload. This lead to removal of 2 (Brsri) and 3 (Bgigi) short sequences from the scaffolds, respectively.  
+
 # phase RAD reads of SEhybrids, NWhybrids, Blm, novel hybrids and simulated hybrids (bbmap/38.6.3)
 for i in $(cat SEhybrids_list.txt); do bbsplit.sh threads=40 ref=Brsri_v3.fasta,Bgigi_v5_mod.fa in=$i-trimmed.fq.gz basename=bbsplit/$i-%-bbsplit.fq.gz refstats=bbsplit/$i-refstats ambiguous2=toss; done
 
