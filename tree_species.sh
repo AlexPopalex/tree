@@ -65,7 +65,7 @@ bcftools view --samples-file ^rm --threads 40 -O z genome_norm_snp_an22_ql20_dp4
 
 
 #make pca (plink/1.90)
-~/Software/plink/plink --pca --allow-extra-chr --vcf genome_norm_snp_an22_ql20_dp4_mm05.vcf.gz --out genome_norm_snp_an22_ql20_dp4_mm05
+~/Software/plink/plink --pca --allow-extra-chr --vcf genome_norm_snp_an22_ql20_dp4_mm05_rm.vcf.gz --out genome_norm_snp_an22_ql20_dp4_mm05_rm
 
 
 #plot (R core team 2023)
@@ -81,8 +81,9 @@ points(pca_hybridoNW$V4~pca_hybridoNW$V3,col="#f47f72",pch=19)
 points(pca_hybridoSE$V4~pca_hybridoSE$V3,col="#ec008c",pch=19)
 points(pca_whitei$V4~pca_whitei$V3,col="#92278f",pch=19)
 points(pca_rredtenbacheri$V4~pca_rredtenbacheri$V3,col="#0599ce",pch=19)
-points(pca_unknwon$V4~pca_unknwon$V3,col="#595959",pch=19)
+points(pca_unknown$V4~pca_unknown$V3,col="#595959",pch=19)
 points(pca_lynceorum$V4~pca_lynceorum$V3,col="#8b5e3c",pch=19)
+points(pca_new$V5~pca_new$V3,col="grey",pch=19)
 points(pca$V4[pca$V1=="Bas"]~pca$V3[pca$V1=="Bas"],col="grey",pch=19,cex=2)
 points(pca$V4[pca$V1=="Bgibi"]~pca$V3[pca$V1=="Bgibi"],col="#f7941d",pch=19,cex=2)
 points(pca$V4[pca$V1=="Bgigi"]~pca$V3[pca$V1=="Bgigi"],col="grey",pch=19,cex=2)
@@ -105,8 +106,9 @@ points(pca_hybridoNW$V5~pca_hybridoNW$V3,col="#f47f72",pch=19)
 points(pca_hybridoSE$V5~pca_hybridoSE$V3,col="#ec008c",pch=19)
 points(pca_whitei$V5~pca_whitei$V3,col="#92278f",pch=19)
 points(pca_rredtenbacheri$V5~pca_rredtenbacheri$V3,col="#0599ce",pch=19)
-points(pca_unknwon$V5~pca_unknwon$V3,col="#595959",pch=19)
+points(pca_unknown$V5~pca_unknown$V3,col="#595959",pch=19)
 points(pca_lynceorum$V5~pca_lynceorum$V3,col="#8b5e3c",pch=19)
+points(pca_new$V5~pca_new$V3,col="grey",pch=19)
 points(pca$V5[pca$V1=="Bas"]~pca$V3[pca$V1=="Bas"],col="#71bf44",pch=19,cex=2)
 points(pca$V5[pca$V1=="Bgibi"]~pca$V3[pca$V1=="Bgibi"],col="#f7941d",pch=19,cex=2)
 points(pca$V5[pca$V1=="Bgigi"]~pca$V3[pca$V1=="Bgigi"],col="#be1e2d",pch=19,cex=2)
@@ -114,6 +116,7 @@ points(pca$V5[pca$V1=="Blm"]~pca$V3[pca$V1=="Blm"],col="#8b5e3c",pch=19,cex=2)
 points(pca$V5[pca$V1=="Brsri"]~pca$V3[pca$V1=="Brsri"],col="#0599ce",pch=19,cex=2)
 points(pca$V5[pca$V1=="SEhaplome"]~pca$V3[pca$V1=="SEhaplome"],col="#0599ce",pch=19,cex=2)
 points(pca$V5[pca$V1=="NWhaplome"]~pca$V3[pca$V1=="NWhaplome"],col="#0599ce",pch=19,cex=2)
+points(pca$V5[pca$V1=="Bwi"]~pca$V3[pca$V1=="Bwi"],col="#92278f",pch=19,cex=2)
 points(pca$V5[pca$V1=="Bwi"]~pca$V3[pca$V1=="Bwi"],col="#92278f",pch=19,cex=2)
 dev.copy2eps(file="pc1v3.eps",width=8,height=8)
 
