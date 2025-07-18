@@ -67,6 +67,7 @@ bcftools view --samples-file ^rm --threads 40 -O z genome_norm_snp_an22_ql20_dp4
 #make pca (plink/1.90)
 ~/Software/plink/plink --pca --allow-extra-chr --vcf genome_norm_snp_an22_ql20_dp4_mm05_rm.vcf.gz --out genome_norm_snp_an22_ql20_dp4_mm05_rm
 
+#Note that we removed the 15 artificial hybrids before plotting eigenvectors.
 
 #plot (R core team 2023)
 plot(pca$V4~pca$V3,col="grey",pch=19,xlab="PC1 (28.7%)",ylab="PC2 (19%)",cex.lab=1.5,main="",axes=F,col.lab="#595959")

@@ -107,18 +107,18 @@ zcat genome_norm_snp_an12_ql20_dp4.vcf.gz | awk '{if (($8 ~ /AN/) && ($8 ~ /DP/)
 zcat genome_norm_snp_an12_ql20_dp4.vcf.gz | awk '{if (($8 ~ /AN/) && ($8 ~ /DP/)) print $8}' | grep -o '[^;]*AN=[^;]*' | sed 's/AN=//g' > AN
 paste DP AN > DPAN
 cat DPAN | awk '{if ($2!="0") print $1,$2,$1/$2}' > DPANdiv
-bcftools filter -e 'INFO/DP>151' --threads 40 -O z genome_norm_snp_an12_ql20_dp4.vcf.gz > genome_norm_snp_an12_ql20_dp4_dp151.vcf.gz
+bcftools filter -e 'INFO/DP>187' --threads 40 -O z genome_norm_snp_an12_ql20_dp4.vcf.gz > genome_norm_snp_an12_ql20_dp4_dp187.vcf.gz
 
 
 # continue filtering (bcftools/1.15.1)
-bcftools filter -e 'FMT/GT="het"' --set-GTs . --threads 40 -O z genome_norm_snp_an12_ql20_dp4_dp151.vcf.gz > genome_norm_snp_an12_ql20_dp4_dp151_hetgt.vcf.gz
-bcftools index genome_norm_snp_an12_ql20_dp4_dp151_hetgt.vcf.gz
-bcftools convert --gvcf2vcf --threads 40 -f Brsri_v3.fasta -O z -o genome_norm_snp_an12_ql20_dp4_dp151_hetgt_conv.vcf.gz genome_norm_snp_an12_ql20_dp4_dp151_hetgt.vcf.gz
-bcftools index genome_norm_snp_an12_ql20_dp4_dp151_hetgt_conv.vcf.gz
+bcftools filter -e 'FMT/GT="het"' --set-GTs . --threads 40 -O z genome_norm_snp_an12_ql20_dp4_dp187.vcf.gz > genome_norm_snp_an12_ql20_dp4_dp187_hetgt.vcf.gz
+bcftools index genome_norm_snp_an12_ql20_dp4_dp187_hetgt.vcf.gz
+bcftools convert --gvcf2vcf --threads 40 -f Brsri_v3.fasta -O z -o genome_norm_snp_an12_ql20_dp4_dp187_hetgt_conv.vcf.gz genome_norm_snp_an12_ql20_dp4_dp187_hetgt.vcf.gz
+bcftools index genome_norm_snp_an12_ql20_dp4_dp187_hetgt_conv.vcf.gz
 
 
 #construct pseudoreferences per sample with Ns for missing genotypes and sites (samtools/1.15.1, bcftools/1.15.1)
-for i in $(cat sample_list); do samtools faidx Brsri_v3.fasta -r scf_list | bcftools consensus -M N -a N -H I -s $i -p $i -o pseudorefs/$i.fa genome_norm_snp_an12_ql20_dp4_dp151_hetgt_conv.vcf.gz; done
+for i in $(cat sample_list); do samtools faidx Brsri_v3.fasta -r scf_list | bcftools consensus -M N -a N -H I -s $i -p $i -o pseudorefs/$i.fa genome_norm_snp_an12_ql20_dp4_dp187_hetgt_conv.vcf.gz; done
 
 
 #convert psequdoreferences into alignments per scaffold

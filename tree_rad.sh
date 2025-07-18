@@ -108,6 +108,7 @@ paste DP AN > DPAN
 cat DPAN | awk '{if ($2!="0") print $1,$2,$1/$2}' > DPANdiv
 bcftools filter -e 'INFO/DP>12546' --threads 40 -O z genome_norm_snp_an12_ql20_dp4.vcf.gz > genome_norm_snp_an12_ql20_dp4_dp12546.vcf.gz
 
+#For the maternal variant file (369 samples) these were sites with a depth > 12,546 and for the paternal variant file (372 samples) sites with a depth > 11,160. 
 
 # continue filtering (bcftools/1.15.1)
 bcftools filter -e 'FMT/GT="het"' --set-GTs . --threads 40 -O z genome_norm_snp_an12_ql20_dp4_dp12546.vcf.gz > genome_norm_snp_an12_ql20_dp4_dp12546_hetgt.vcf.gz
