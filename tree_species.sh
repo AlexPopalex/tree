@@ -42,7 +42,7 @@ samtools view Bgigi_Brsri_sorted.bam -h -F 2308 -q 20 -@ 40 -o Bgigi_Brsri_sorte
 rm -f Bgigi_Brsri_sorted.bam
 
 
-#variant calling for pseudoreference construction from (phased) reads for subsequent tree reconstruction in gvcf format and per scaffold (bcftools/1.15.1)
+#variant calling per scaffold (bcftools/1.15.1)
 bcftools mpileup --threads 40 -Ou --annotate FORMAT/DP,FORMAT/AD -r Brsri_v3_scf1 -f Brsri_v3.fasta -b full_list_genomes.txt | bcftools call --threads 40 -v -m -Oz -o scf1.vcf.gz
 bcftools index scf1.vcf.gz
 
